@@ -4,7 +4,8 @@ Multistage Docker build :
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy pom.xml and download dependencies first (better caching), here . is WORKDIR(Copy local pom.xml → /app/pom.xml inside container)
+# Copy pom.xml and download dependencies first (better caching - go-offline(withount internet download),
+#here . is WORKDIR(Copy local pom.xml → /app/pom.xml inside container)
 COPY pom.xml .
 RUN mvn dependency:go-offline -B
 
